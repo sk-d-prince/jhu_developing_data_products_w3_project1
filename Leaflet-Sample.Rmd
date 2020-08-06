@@ -1,7 +1,7 @@
 ---
 title: "Crime in Sacremento, CA"
-author: "SRIVATHSAN K"
-date: "August 6, 2020"
+author: "Yash Kumar Singh"
+date: "August 31, 2017"
 output: 
   html_document: 
     keep_md: yes
@@ -17,6 +17,7 @@ Reading data from the given url and subsetting to extract 800 random samples out
 data <- "http://samplecsvs.s3.amazonaws.com/SacramentocrimeJanuary2006.csv"
 df <- read.csv(url(data))
 df <- df[sample(nrow(df), 800), c(8,9)]
+
 ```
  
 
@@ -26,8 +27,10 @@ The map below shows a clustered view of all the spots where crimes were recorded
 
 ```{r Leaflet, echo=TRUE}
 library(leaflet)
+
 df %>%
   leaflet() %>%
   addTiles() %>%
   addMarkers(clusterOptions = markerClusterOptions())
+
 ```
